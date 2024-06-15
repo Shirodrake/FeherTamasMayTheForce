@@ -1,7 +1,6 @@
-
 using UnityEngine;
 
-public class Follower : MonoBehaviour
+class Follower : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float speed;
@@ -16,8 +15,5 @@ public class Follower : MonoBehaviour
             float maxD = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(selfPoint, targetPoint, maxD);
         }
-
-        
-       // transform.position += direction * speed *Time.deltaTime;
     }
 }

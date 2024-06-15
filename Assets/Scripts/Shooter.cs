@@ -1,38 +1,51 @@
-
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Shooter : MonoBehaviour
+class Shooter : MonoBehaviour
 {
-    [SerializeField] GameObject Bullet;
+
+    [SerializeField] GameObject prototype;
     [SerializeField] int maxAmmo;
+    [SerializeField, FormerlySerializedAs("offsetPoint")] Vector3 offsetPosition;
 
-    [SerializeField] int ammo;
+    int ammo;
 
-   void Start()
+    void Start()
     {
         ammo = maxAmmo;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (ammo > 0)
             {
-                Debug.Log("Boom");
+                GameObject newProjectile = Instantiate(prototype); 
+                newProjectile.transform.position = GetProjectileStartPoint();
+                newProjectile.transform.rotation = transform.rotation;
+
                 ammo--;
             }
-
             else
             {
                 Debug.Log("Klikk");
             }
-
-
-            if (Input.GetKeyDown(KeyCode.X) && ammo == 0)
-            {
-                ammo = maxAmmo;
-            }
         }
+
+        if (Input.GetKeyDown(KeyCode.Return) && ammo == 0)
+            ammo = maxAmmo;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(GetProjectileStartPoint(), 0.25f);
+    }
+
+    Vector3 GetProjectileStartPoint()
+    {
+        Vector3 localOffset = transform.TransformVector(offsetPosition);
+        return transform.position + localOffset;
     }
 }

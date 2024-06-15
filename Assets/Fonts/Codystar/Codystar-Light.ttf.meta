@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 5a4fe2ac1f433e740b0055823c6e585b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Codystar
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 58ff2e02eb6a8ec479369eb80649e167, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
